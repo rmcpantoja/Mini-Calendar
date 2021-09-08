@@ -1,0 +1,10 @@
+sounds/ring1.ogg
+sounds/ring2.ogg
+sounds/ring3.ogg
+sounds/ring4.ogg
+sounds/ring5.ogg
+sounds/ring6.ogg
+sounds/ring7.ogg
+sounds/ring8.ogg
+sounds/ring9.ogg
+sounds/ring10.ogg

@@ -1,0 +1,5 @@
+sounds/alarm1.ogg
+sounds/alarm2.ogg
+sounds/alarm3.ogg
+sounds/alarm4.ogg
+sounds/alarm5.ogg
