@@ -1,0 +1,58 @@
+Manual de mini Calendario
+¿Qué es esto?
+Esto es un programa donde te permite gestionar, configurar, agregar o notificar agendas, actividades, eventos o rutinas que tengas pendientes para una fecha y hora determinada, así como también crear y gestionar alarmas, diseño de diario personal y más. A continuación se enlistarán y describirán las funciones disponibles.
+• configuración de agenda: Nombre, descripción, tiempo y tres modos de recordatorio, puedes usar el que te guste: Agenda por Email, documento de texto y notificación a través del mismo programa.
+• Configuración y gestión de alarma: Puedes crear alarmas, otro tipo de recordatorio, para mantenerte al día de tus rutinas o de lo que desees, puedes usarlo como despertador o simplemente para ponerte en pie con tus agendas.
+• Configuración y gestión de calendario: Diversas opciones como nombre de evento, descripción, fecha, invitados, recordatorio.
+• Diseño de diario personal: Te permite diseñar, crear y gestionar tus diarios, colocar información en ellos, crear o imprimir documento con los días que escribiste y más.
+• Ejecutar el programa en segundo plano.
+• Iniciar con Windows. Útil para que no pierdas el control de tus agendas.
+• ¡y posiblemente puedes ver alguna que otra función más!.
+¿Cómo usar?
+Extrae el zip del programa y abre MC.exe.
+Aviso: En la primera sesión, si no hay configuraciones te preguntará si deseas activar accesibilidad mejorada. Esto fue hecho únicamente para las personas con algún tipo de discapacidad. Si no eres alguna persona con dificultad visual, te recomendamos que no actives, eso queda a decisión del usuario.
+Luego, se te preguntará el idioma que quieres usar. Si tienes accesibilidad mejorada selecciona con las flechas arriba y abajo, caso contrario cliquea sus respectivos botones.
+Una vez terminada la configuración inicial, se guardarán las opciones seleccionadas por ti y el programa comienza con su ejecución, por lo que puedes comenzar a interactuar.
+Después de esto, te aparecerá la ventana principal donde te indica que puedes abrir el menú en la que puedes acceder a varias funciones y botones que te permiten acceder a la ayuda, cambios, GitHub y más.
+Para conocer todas las funciones, se encuentran abriendo el menú. éste se puede abrir pulsando ALT (comúnmente como todos los menús) cliqueándolo o pulsando el botón "abrir el menú" en la pantalla principal.
+Mini Calendar. En este menú puedes encontrarte con 6 cosas
+• Agendar. Ejecuta el administrador de agendas.
+• submenú alarma: Aquí puedes administrar y crear distintos tipos de alarmas, ya sean repetitivas o simplemente recordatorios.
+• Submenú calendario: Te permite crear un nuevo calendario y sobre él puedes empezar a colocar eventos.
+• Submenú diario: Permite crear o administrar tu diario personal.
+• Opciones: Muestra una ventana con opciones que puedes configurar.
+• Salir: Sale del programa, o si hay una agenda en curso cierra la interfaz pero el programa permanece en segundo plano. Caso contrario lo cierra correctamente.
+Submenú ayuda:
+• Manual de usuario: Muestra en pantalla el presente manual.
+• Visitar Web: Visita la página web.
+• Acerca de: Muestra en pantalla un diálogo con información del programa, número de versión, etc.
+• Errores y sugerencias: Por si deseas aportar alguna crítica, error o sugerencia. Tus aportes son siempre bienvenidos.
+* Conociendo la interfaz:
+* Agendar:
+Grupo fecha y hora.
+Nombre de agenda: Un nombre corto, claro y conciso. Si dejas el campo en blanco se nombrará como "Agenda sin título".
+Descripción: En la descripción puedes añadir información sobre tu agenda, para qué vas a desarrollar esa actividad, etc. Puedes dejar este campo en blanco si lo quieres.
+Día: Nota: Para colocar los números de tiempo debes de tener en cuenta que el 0 va acompañado antes del número, si es una unidad, desde 01 a 09, el rango es de 01 hasta 28 (en caso de febrero)) 29 (29 de febrero en año bisiesto) 30 o 31 en algunos meses.
+Elegir mes: Un cuadro combinado donde te permite elegir el mes, de enero a diciembre.
+Escribe la hora de inicio: La hora que comenzará a dar a cabo la agenda. Su rango es de 00 (doce de la mañana) hasta 23:59 (once y cincuenta y nueve de la noche)
+Hora de finalización: La hora en la que dé por terminada la agenda. Como en el campo anterior, se escribe respetando el formato.
+Elegir minuto de inicio: Cuadro combinado para elegir minuto de inicio, de 00 a 55.
+Minuto de finalización: El minuto donde terminará la agenda (00 a 55).
+Elegir segundo de inicio: El segundo donde comenzará a cabo la acción. Es opcional, puedes dejarlo en 00 si lo deseas.
+Segundo de finalización: (opcional) donde dará por terminada la agenda.
+Grupo ¿cómo quieres obtener la agenda?
+Recuérdame, por favor, envía un mensaje a mi correo electrónico: Si eliges esta opción te preguntará cuál es la dirección de tu Email para que recibas el recordatorio minutos antes o justo a tiempo.
+Anótame en un archivo de texto: Esta opción te permite hacer apuntes de toda tu configuración de agenda escrita por ti en los campos explicados con anterioridad, para que posteriormente guardes, imprimas o compartas el documento.
+Notifícame: Esta opción te notifica mediante sonidos, notificación/voz, o ambas cosas. Cabe aclarar que dejando este botón de radio/opción marcado se te mostrarán controles, que son estos:
+¿Cómo quieres la notificación?: Este cuadro te permite elegir cómo quieres que se te notifique. Solo sonido, solo notificación, o sonido y notificación a la vez.
+Selecciona un sonido de la lista: Te permite elegir un archivo de audio entre los sonidos disponibles para que posteriormente sea reproducido. Actualmente hay 6, pero se podrían agregar más.
+Elige los minutos de anticipación para notificación: Indicas al programa cuántos minutos antes de tiempo se te notifique. Por ejemplo, si quieres que te notifique media hora antes de la hora acordada selecciona "30 minutos antes".
+Aceptar: Comienza con la configuración de tu agenda y a procesar las opciones que has elegido.
+Volver a la ventana anterior: Sale de la interfaz y regresa a la ventana principal.
+Por ahora esa es toda la interfaz que se te ofrece.
+*Preguntas más frecuentes:
+* ¿Puedo usar esto para otras más cosas?
+Si, esto se puede aplicar en más cosas, por ejemplo recordatorios, rutinas diarias, actividades pendientes, programar algún evento, desarrollar tu diario a tu creatividad, quizá puedas descubrir más con lo que puedas hacer con este programa.
+* Conclusión y agradecimientos:
+Espero que te sea de agrado y que le des un uso adecuado a esta herramienta que te puede servir desde ahora o en un futuro. Si hay algo que crees que deba mejorar, por favor contáctame.
+Fin.
