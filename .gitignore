@@ -1,0 +1,5 @@
+*.exe
+*.dat
+*.zip
+tests/
+MC_translation_quit/
