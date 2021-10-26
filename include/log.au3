@@ -1,15 +1,13 @@
 #include <fileConstants.au3>
-Global $ifSabe = IniRead("config\config.st", "General settings", "Sabe Logs", "")
+Global $ifSave = IniRead("config\config.st", "General settings", "Save Logs", "")
 Select
-	Case $ifSabe = "yes"
+	Case $ifSave = ""
+		IniWrite("config\config.st", "General settings", "Save Logs", "Yes")
+	Case else
 		Local $logfile = FileOpen("logs\" & @YEAR & @MON & @MDAY & ".log", $FC_OVERWRITE + $FC_CREATEPATH)
-	Case $ifSabe = "no"
-		Sleep(5)
-	Case Else
-		IniWrite("config\config.st", "General settings", "Sabe Logs", "Yes")
 EndSelect
 Func writeinlog($text)
-	If $ifSabe = "yes" Then
+	If $ifSave = "yes" Then
 		FileWrite($logfile, @YEAR & "-" & @MON & "-" & @MDAY & " " & @HOUR & ":" & @MIN & ": " & $text & @CRLF)
 	EndIf
 EndFunc   ;==>writeinlog

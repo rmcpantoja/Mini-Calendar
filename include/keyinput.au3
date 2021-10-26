@@ -40,30 +40,30 @@ Func check_keys()
 $capt = check_key("25",0)
 If $capt = -1 Then return 0
 If $capt = 1 Then
-handle_key("left arrow")
+$key="left arrow"
 EndIf
 $capt = check_key("27",1)
 If $capt = 1 Then
-handle_key("right arrow")
+$key="right arrow"
 EndIf
 $capt = check_key("26",2)
 If $capt = 1 Then
-handle_key("up arrow")
+$key="up arrow"
 EndIf
 $capt = check_key("28",3)
 If $capt = 1 Then
-handle_key("down arrow")
+$key="down arrow"
 EndIf
 $capt = check_key("20",4)
 If $capt = 1 Then
-handle_key("spacebar")
+$key="spacebar"
 EndIf
 $capt = check_key("0D",5)
 If $capt = 1 Then
-handle_key("enter")
+$key="enter"
 EndIf
 $capt = check_key("1B",6)
 If $capt = 1 Then
-handle_key("escape")
+$key="escape"
 EndIf
 EndFunc

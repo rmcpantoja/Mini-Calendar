@@ -1,5 +1,6 @@
 ;#include "kbc.au3"
 #include-once
+#include "log.au3"
 #include "jfw.au3"
 #include "NVDAControllerClient.au3"
 #include "sapi.au3"
