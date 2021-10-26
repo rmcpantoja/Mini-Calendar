@@ -1,6 +1,6 @@
 [language info]
 Name=Português
-version=
+version=0.4
 author=Ângelo Abrantes
 Copyright=
 [strings]
@@ -156,6 +156,11 @@ Friday=Sexta-feira
 Saturday=Sábado
 Sunday=Domingo
 Alarm sound, currently=Som do alarme, actualmente
+Record alarm=Gravar alarme
+The alarm recording will last approximately 10 seconds or less. when you're ready, hit accept to start recording.=A gravação do alarme durará aproximadamente 10 segundos ou menos. Quando estiver pronto, aceite iniciar, para começar a gravar.
+This dialog disappears in 10 seconds. Press OK to stop and create an alarm for less time.=Esta caixa de diálogo desaparecerá em 10 segundos. Pressione OK para parar e criar um alarme com menos tempo.
+Failed to record=Falha ao gravar
+Recording finished=Gravação terminada
 Notify me when the alarm goes off=Notifique-me quando o alarme estiver desligado
 Show dialog window=Mostrar a janela do diálogo
 Duration to postpone=Duração para adiar

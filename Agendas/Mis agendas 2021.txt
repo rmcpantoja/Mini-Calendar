@@ -1,0 +1,10 @@
+Nombre de la aGenda (opcional) dejar en blanco para aGenda sin título: test
+Descripción (opcional): esta es otra ddescripción para comprobar como funciona la anotación.
+Día: 18
+Elegir mes: 10
+Escribe la hora de inicio tu agenda: 22
+Hora de finalización: 23
+Elige minuto: 05
+Elige minuto de finalización: 00
+ELige el segundo: 00
+ELige el segundo de finalización: 00

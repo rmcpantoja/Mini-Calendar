@@ -1,27 +1,42 @@
+;These are the functions and the respective code for the options menu. Each of the functions understand by themselves what they are for.
 Func opciones()
-$directorio = "c:\users\" &@username &"\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
+;@Danyfirex - en esta funcion cambie muchas posiciones de controles asi que no anote todo lo que se cambio pero todos los controles estan en posiciones
+global $directorio = "c:\users\" &@username &"\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
 Global $rutadelarchivo = $directorio & "\Mini Calendar.nlk"
+global $ifsavesettings = IniRead("config\config.st", "General settings", "Save settings", "")
+global $ifsavelogs = IniRead("config\config.st", "General settings", "Save logs", "")
+global $ifcheckupds = IniRead("config\config.st", "General settings", "Check updates", "")
+global $ifMinimize = IniRead("config\config.st", "General settings", "Minimize", "")
+global $ifwritingsound = IniRead("config\config.st", "General settings", "Play sounds when typing", "")
 global $guioptions2 = GuiCreate(translate($idioma, "Options menu"))
-global $idStartWindows = GUICtrlCreateCheckbox(translate($idioma, "Start Mini Calendar and scheduler With Windows (beta)"), 50, 100, 20, 25)
+global $idStartWindows = GUICtrlCreateCheckbox(translate($idioma, "Start Mini Calendar and scheduler With Windows"), 50, 100 +(0*25), 350, 25)
 GUICtrlSetOnEvent(-1, "iniciarconwindows")
-global $idSabesettings = GUICtrlCreateCheckbox(translate($idioma, "Save options (recommended)"), 85, 100, 20, 25)
+global $idSavesettings = GUICtrlCreateCheckbox(translate($idioma, "Save options (recommended)"), 50, 100 +(1*25), 350, 25)
 GUICtrlSetOnEvent(-1, "guardaropciones")
-global $idCheckUpds = GUICtrlCreateCheckbox(translate($idioma, "Check for updates (recommended)"), 120, 100, 20, 25)
+if $ifsavesettings = "yes" then GUICtrlSetState($idSavesettings, $GUI_CHECKED)
+global $idSavelogs = GUICtrlCreateCheckbox(translate($idioma, "Save logs"), 50, 100 +(2*25), 350, 25)
+GUICtrlSetOnEvent(-1, "guardarlogs")
+if $ifsavelogs = "yes" then GUICtrlSetState($idSavelogs, $GUI_CHECKED)
+global $idCheckUpds = GUICtrlCreateCheckbox(translate($idioma, "Check for updates (recommended)"), 50, 100 +(3*25), 350, 25)
 GUICtrlSetOnEvent(-1, "buscaractualizaciones")
-global $idMinimize = GUICtrlCreateCheckbox(translate($idioma, "Move the mini calendar to the system tray"), 145, 100, 20, 25)
+if $ifcheckupds = "yes" then GUICtrlSetState($idcheckupds, $GUI_CHECKED)
+global $idMinimize = GUICtrlCreateCheckbox(translate($idioma, "Move the mini calendar to the system tray"), 50, 100 +(4*25), 350, 25)
 GUICtrlSetOnEvent(-1, "minimizaralabandeja")
-global $voice_Label = GUICtrlCreateLabel(translate($idioma, "Select text-to-speech output"), 130, 100, 20, 25)
-global $idChangevoice1 = GUICtrlCreateCombo("Sapi", 130, 120, 20, 30, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
+if $ifminimize = "yes" then GUICtrlSetState($idminimize, $GUI_CHECKED)
+global $idPlaysounds = GUICtrlCreateCheckbox(translate($idioma, "Play sounds when typing"), 50, 100 +(5*25), 350, 25)
+GUICtrlSetOnEvent(-1, "reproducir")
+if $ifwritingsound = "yes" then GUICtrlSetState($idplaysounds, $GUI_CHECKED)
+global $voice_Label = GUICtrlCreateLabel(translate($idioma, "Select text-to-speech output"), 50, 110 +(6*25), 200, 25)
+global $idChangevoice1 = GUICtrlCreateCombo("Sapi", 230, 110 +(6*25)-5, 100, 30, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
 GUICtrlSetData($idChangevoice1, "NVDA|JAWS")
 GUICtrlSetOnEvent(-1, "Cambiarvoz")
-$idBTN_Close = GUICtrlCreateButton(translate($idioma, "close"), 150, 100, 50, 25)
+$idDeleteconfig = GUICtrlCreateButton(translate($idioma, "clear settings"), 160, 240, 50, 30)
+GUICtrlSetOnEvent(-1, "clear")
+$idBTN_Close = GUICtrlCreateButton(translate($idioma, "&aply"), 230, 240, 50, 30)
 GUICtrlSetOnEvent(-1, "eliminar")
 GUISetState(@SW_SHOW)
 Local $sComboRead = ""
-Opt("GUIOnEventMode",1)
 GUISetOnEvent($GUI_EVENT_CLOSE, "eliminar")
-;while 1
-;Wend
 EndFunc
 func iniciarconwindows()
 If _IsChecked_audio($idStartWindows) Then
@@ -36,20 +51,33 @@ $CHECKBOX2.play
 FileDelete($rutadelarchivo)
 EndIf
 EndFunc
-func guardaropciones()
-If _IsChecked_audio($idSabesettings) Then
-IniWrite("config\config.st", "General settings", "Sabe settings", "Yes")
+func guardarlogs()
+If _IsChecked_audio($idSavelogs) Then
+IniWrite("config\config.st", "General settings", "Save logs", "Yes")
 Else
 $CHECKBOX2.play
-IniWrite("config\config.st", "General settings", "Sabe settings", "No")
+IniWrite("config\config.st", "General settings", "Save logs", "No")
+EndIf
+EndFunc
+func guardaropciones()
+If _IsChecked_audio($idSavesettings) Then
+IniWrite("config\config.st", "General settings", "Save settings", "Yes")
+Else
+$CHECKBOX2.play
+IniWrite("config\config.st", "General settings", "Save settings", "No")
 EndIf
 EndFunc
 func buscaractualizaciones()
 If _IsChecked_audio($idCheckUpds) Then
 IniWrite("config\config.st", "General settings", "Check updates", "Yes")
 Else
+$updquest = MsgBox(4, translate($idioma, "question"), translate($idioma, "By uncheck this option you will not receive updates or messages of the day. We recommend that you keep up to date with the latest version soon. Do you want to continue?"))
+if $updquest = "6" then
 $CHECKBOX2.play
 IniWrite("config\config.st", "General settings", "Check updates", "No")
+else
+GUICtrlSetState($idcheckupds, $GUI_CHECKED)
+EndIf
 EndIf
 EndFunc
 func minimizaralabandeja()
@@ -58,6 +86,14 @@ IniWrite("config\config.st", "General settings", "Minimize", "Yes")
 Else
 $CHECKBOX2.play
 IniWrite("config\config.st", "General settings", "Minimize", "No")
+EndIf
+EndFunc
+func reproducir()
+If _IsChecked_audio($idPlaysounds) Then
+IniWrite("config\config.st", "General settings", "Play sounds when typing", "Yes")
+Else
+$CHECKBOX2.play
+IniWrite("config\config.st", "General settings", "Play sounds when typing", "No")
 EndIf
 EndFunc
 func cambiarvoz()
@@ -73,4 +109,13 @@ EndFunc
 Func _IsChecked_audio($idControlID)
 $CHECKBOX.play
 Return BitAND(GUICtrlRead($idControlID), $GUI_CHECKED) = $GUI_CHECKED
+EndFunc
+func clear()
+$confirmarborrado = MsgBox(4, translate($idioma, "Clear settings"), translate($idioma, "Are you sure?"))
+select
+case $confirmarborrado = 6
+DirRemove(@ScriptDir & "\config", 1)
+MsgBox(48, translate($idioma, "Information"), translate($idioma, "Please restart Mini Calendar for the changes to take effect."))
+Exitpersonaliced()
+EndSelect
 EndFunc

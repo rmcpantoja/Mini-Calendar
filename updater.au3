@@ -10,7 +10,7 @@ GUISetState(@SW_SHOW)
 sleep(10)
 $sLanguage = iniRead ("config\config.st", "General settings", "language", "")
 $ReadAccs = iniRead ("config\config.st", "Accessibility", "Enable enanced accessibility", "")
-Local $yourexeversion = FileGetVersion($s_exexutable)
+Local $yourexeversion = FileGetVersion($s_executable)
 select
 case $sLanguage ="es"
 $newversion=" Tienes la "
@@ -19,7 +19,7 @@ case $sLanguage ="eng"
 $newversion=" You have the version "
 $newversion2=", And is available the "
 endselect
-$fileinfo = InetGet($s_URL, $S_Program &"Web.dat")
+$fileinfo = InetGet($s_DatURL, $S_Program &"Web.dat")
 FileCopy($s_Program &"Web.dat", @TempDir & "\" &$S_Program &"Web.dat")
 $latestver = iniRead (@TempDir & "\" &$S_program &"Web.dat", "updater", "LatestVersion", "")
 if $sLanguage ="Es" then

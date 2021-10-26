@@ -1,0 +1,60 @@
+﻿Alterações.
+0.4 Beta Pública, 03 de agosto de 2021 em processo, (16 de Outubro de 2021 lançamento)
+Esta actualização fornece suporte para a criação de mais de um calendário, alarme, calendário e novos recursos diárias, bem como correções de erros.
+AVISO: Infelizmente, o relatório de erros foi eliminado e agora é substituído por "erros e sugestões". A decisão foi tomada tendo em conta que o apoio agenda por e-mail será removido na próxima versão, como resultado de GitGuardian.
+* alterações do utilizador:
+1. Em cada agenda, um atalho é adicionado para cancelar a mesma ou lembrá-lo da próxima vez que abrir o programa.
+1.1 Renovada a janela principal.
+1.2 Adicionado suporte para melhor acessibilidade.
+1.3 Ring1, Ring2 e Ring3 foram removidos da lista de sons, substituídos por outros.
+1.4. Adicionado suporte para alarme.
+1.5 Isso também foi apoiado e calendário e função diária, a fim de expandir o programa mais o programa.
+1.6 Melhor suporte para mais de duas e / ou mais idiomas através de ficheiros, criando um novo módulo de tradução; Os ficheiros de idioma estão em LNG / language.LANG. Pode contribuir com o seu idioma de preferência e fazer o upload do ficheiro no formulário "erros e sugestões".
+1.6.1. Actualizações para novos idiomas foram adicionadas, por isso, quando iniciar o programa vai olhar para as actualizações a partir deles e, se possível, fazer o download do seu, caso tenha sido adicionado.
+* correcções:
+2. O programa já não pára mais depois de realizar certas acções, por exemplo. Configurar uma agenda ou retornar à janela principal.
+2.1 Agora, se não tiver um mês, dia, hora ou minuto, vai ser alertado e não irá dar mensagem de erro de código.
+2.2 Na versão de código-fonte, já não é estritamente necessário compilar se quiser tentar algo, depois que foi lançado o aviso de nova versão disponível.
+*em desenvolvimento:
+3. a opção "Relatório de erro" foi eliminada e foi substituída por "erros e sugestões", que abre uma página de Formulários do Google com os dados que devem ser introduzidos.
+3.1 Agora já não precisa de extrair os sons durante a execução do programa, pois são reproduzidos a partir do ficheiro .zip. Foram retirados os alertas de erro.
+3.2 Para os desenvolvedores, a classe $ WindowsLanguage foi removida e substituída pelo macro @oslang.
+
+0.3 Beta Pública, 26 de abril de 2021 em processo, (9 de maio de 2021 lançamento).
+Esta actualização corrige os erros, acrescenta traduções e começa com o apoio de gerir mais de um calendário (ainda não está pronto).
+* alterações do utilizador:
+1. Agora, a aplicação move-se para a barra do sistema depois de criar uma agenda.
+1.1 Adicionado o item de menu "alterações" na Ajuda.
+1,2 Melhorou-se a opção para iniciar automaticamente com o Windows.
+1.3 Adicionada rolagem por áudio.
+* Correcções:
+2. A tradução para o espanhol foi melhorada e mensagens perdidas foram adicionadas na versão anterior.
+2.1 Corrigido erro com o antivírus, que detectou o programa como uma ameaça.
+2.2 Dispostos os elementos do menu Ajuda.
+2.3 Arranjos no código.
+2.4 A maioria dos controlos GUI reagem mais rápido com leitores de ecrã.
+* Desenvolvimento do programa:
+3. Actualizado UDF Reader.
+3.1 O UDF Cript e Zip foram removidos, uma vez que fizeram o antivírus detectar o programa como uma ameaça; Principalmente esta era usada para criptografia de som.
+3.2 Agora, depois de criar uma agenda, um arquivo INI é salvo com ela de modo que numa actualização futura o utilizador pode geri-la, modificá-la ou removê-la.
+
+0,2 beta privada, 21 de abril de 2021 em processo, (23 de abril de 2021 lançamento).
+1. Adicionados mais sons.
+1.1 Adicionado o sistema para relatar erros.
+1,2 Adicionada opção para ver as suas agendas.
+1.3 Agora pode iniciar o Mini Calendário com o Windows.
+1.4. Agora pode escolher quantos minutos antes da notificação será avisado.
+1.5 Agora, a selecção de segundos, minutos e meses fazem-se em tabelas combinadas.
+1,6 acrescentou-se a hora,minuto e segundo final da agenda ou programação.
+2. Corrigido erro com a configuraçãodo idioma, se tivesse o idioma do sistema em Inglês.
+2.1 Corrigido erro com a janela de actualização.
+2.2 erros corrigidos da terminologia em espanhol.
+2,3 Removido o erro "não conseguiu inicializar o objecto" para o leitor de ecrã JAWS.
+2.4 Corrigida mensagem de notificação de agenda, em que o minuto era subtraído de 10 e não mostrava o horário exacto.
+2,5 Corrigido erro quando não tem opção seleccionada. Em vez disso, mostra uma mensagem.
+2.6 Corrigidas as coordenadas dos controlos.
+2,7 Fixação de erros para algumas mensagens pontuais e notificações.
+2,8 corrigido erro com elementos do menu "ajuda", na janela principal.
+
+0.1 beta privada, 18 de abril de 2021.
+Versão inicial.
