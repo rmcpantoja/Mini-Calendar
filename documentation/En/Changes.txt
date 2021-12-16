@@ -1,4 +1,39 @@
 Changes.
+0.5 stable, Oct 17, 2021 in process, (Nov 17, 2021 released)
+This new version includes major changes to the graphical interface, Public Alarm, Diary and Calendar functions, bug fixes and more.
+1. Added function to play sounds when typing.
+1.1. The mail system has been totally removed, now you can make this type of schedule manually.
+1.2. Added Calendar and Diary functions, which were previously in the pre-beta version.
+1.2.1. expanded the diary system, which now includes a daily routine generator and added talking clock function.
+1.3. Installable version created.
+1.4. The "check for updates" and "save settings" options are more effective.
+1.5. New options:
+1.5.1. Save logs.
+1.5.2. Play sounds when tiping.
+1.5.3. Clear settings.
+1.5.4. Select recordings path.
+1.5.5. Enable graphical interface acceleration: Gives faster access to application controls, especially for people with disabilities.
+Note: This was previously enabled, but I have decided that faster GUI behavior can be activated by the user manually. Warning. It may increase CPU usage but improves the experience.
+1.6. New function to share this app in the main window.
+1.7. Improved support for recorded alarms.
+1.8. Improved the language selector and adapted for people without disabilities (GUI).
+1.9. Expanded the minimize action to the system tray. Now this makes more sense!
+1.10. New function: In an schedule, when you want to write it down, now it also offers you the possibility of printing it. You can apply both actions at the same time or just one, by checking their respective boxes.
+* Fixes:
+2. Fixed windows freezing after making an schedule by email.
+2.1. Change and novelty at the same time: Redesigned the visual graphical interface of the entire program. Thanks to @Danyfirex.
+2.2. Now you can close any window also in the top menu of the system apart from the "close" buttons that are offered to you. Thanks to @Danyfirex.
+2.3. Fixed some tooltips that remained frozen.
+2.4. Schedule: Fixed the option to choose minutes in advance, this used to fail in some cases.
+2.5. Enhanced accessibility: Fixed navigation or scroll sound, which kept playing in a loop.
+2.6. Fixed an important bug that prevented using the program in offline mode, in the case when it searches for updates but you do not have an internet connection.
+2.7. Fixed alarm function.
+2.8. Corrected messages of the day (MOTD) and restored the audio messages.
+2.9. More compatible with Windows 11.
+2.10. Fixed a problem with logs.
+* Development:
+3. The translation entries that contained the twelve months of the year have been removed. Instead, use an entry with the twelve months, separated by a vertical bar (|) for each month. Ex: January|February|March.
+3.1. the separator sign for menu items in audio (improved accessibility) has been changed to "|" instead of ",".
 0.4 public beta, Aug 3, 2021 in process, (Oct 16, 2021 released)
 This update provides support for creating more than one calendar, new alarm, calendar and diary functions, as well as bug fixes.
 Warning: Unfortunately, the bug reporter has been removed and is now replaced by "bugs and suggestions". A decision has been made that email schedule support will be removed in the next release, as a result of GitGuardian.

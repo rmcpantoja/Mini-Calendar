@@ -4,12 +4,13 @@
 ;Including scripts
 #include <AutoItConstants.au3>
 #include <MsgBoxConstants.au3>
+#include "include\translator.au3"
+global $idioma = ""
+$ReadAccs = iniRead (@scriptDir &"\config\config.st", "Accessibility", "Enable enanced accessibility", "")
 func checkupdate($S_Program, $s_executable, $s_DatURL, $s_Window)
 $main = GUICreate($s_window)
 GUISetState(@SW_SHOW)
 sleep(10)
-$sLanguage = iniRead ("config\config.st", "General settings", "language", "")
-$ReadAccs = iniRead ("config\config.st", "Accessibility", "Enable enanced accessibility", "")
 Local $yourexeversion = FileGetVersion($s_executable)
 select
 case $sLanguage ="es"
@@ -99,14 +100,7 @@ If (Int($iTotalDownloaded) = 0) Then Return Round($iTotalDownloaded * 1024, $iPl
 Next
 EndFunc
 func _Updater_Update($S_executable, $S_URLinstallable, $S_URLPortable)
-$sLanguage = iniRead ("config\config.st", "General settings", "language", "")
-$ReadAccs = iniRead ("config\config.st", "Accessibility", "Enable enanced accessibility", "")
-select
-case $sLanguage ="Es"
-ProgressOn("Descargando actualización.", "espera...", "0%", 100, 100, 16)
-case $sLanguage ="Eng"
-ProgressOn("Downloading update.", "Please wait...", "0%", 100, 100, 16)
-endselect
+ProgressOn(translate($idioma, "Downloading update."), "Please wait...", "0%", 100, 100, 16)
 $iPlaces = 2
 $AppUrl = $S_URLPortable
 $fldr = 'MCExtract.exe'
@@ -117,34 +111,14 @@ Sleep(50)
 $Size = InetGetInfo($hInet, 0)
 $Percentage = Int($Size / $URLSize * 100)
 $iSize = $URLSize - $Size
-select
-case $sLanguage ="Es"
-$m2="Descargando..."
-ProgressSet($Percentage, $m2, _GetDisplaySize($iSize, $iPlaces = 2) & " restante(s) " & $Percentage & " porciento completado")
-case $sLanguage ="Eng"
-ProgressSet($Percentage, _GetDisplaySize($iSize, $iPlaces = 2) & " remaining " & $Percentage & " percent completed.")
-endselect
+ProgressSet($Percentage, _GetDisplaySize($iSize, $iPlaces = 2) & " " &translate($idioma, "remaining") &$Percentage & " " &translate($idioma, "percent completed"))
 If _ispressed($I) Then
-select
-case $ReadAccs ="yes"
-speaking("FileSize in bites:" & $URLSize & ". Downloaded: " & $Size& ". Progress: " & $Percentage & "%. Remaining: " & $iSize)
-case $ReadAccs ="no"
-msgbox (0, "Information", "FileSize in bites:" & $URLSize & ". Downloaded: " & $Size& ". Progress: " & $Percentage & "%. Remaining: " & $iSize)
-endselect
+speaking(translate($idioma, "FileSize in bites:") &" " &$URLSize & ". " &translate($idioma, "Downloaded:") &" " &$Size& ". " &translate($idioma, "Progress:") &" " &$Percentage & "%. " &translate($idioma, "Remaining size:") &" " &$iSize)
+msgbox (0, "Information", translate($idioma, "FileSize in bites:") &" " &$URLSize & ". " &translate($idioma, "Downloaded:") &" " &$Size &". " &translate($idioma, "Progress:") &" " &$Percentage &"%. " &translate($idioma, "Remaining size:") &" " &$iSize)
 endif
 WEnd
-select
-case $sLanguage ="Es"
-ProgressSet(90, "Acabando", "Acabando...")
-case $sLanguage ="Eng"
-ProgressSet(90, "ending up", "ending up... Please wait.")
-endselect
-select
-case $sLanguage ="Es"
-ProgressSet(99, "Instalando la actualización.", "Espera mientras el programa se actualiza.")
-case $sLanguage ="Eng"
-ProgressSet(99, "Installing update.", "Please wait while the program updates")
-endselect
+ProgressSet(90, translate($idioma, "ending up..."), translate($idioma, "Please wait..."))
+ProgressSet(99, translate($idioma, "Installing update. Please wait while the program updates"))
 sleep(3000)
 $process = ProcessExists($s_Executable)
 If NOT $process = 0 Then
@@ -154,7 +128,7 @@ EndIf
 sleep(500)
 ProgressOff()
 run("MCExtract.exe")
-_exitpersonaliced()
+;_exitpersonaliced()
 endfunc
 func DownloadEMK()
 $sLanguage = iniRead ("config\config.st", "General settings", "language", "")

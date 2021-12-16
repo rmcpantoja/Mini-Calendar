@@ -1,13 +1,13 @@
 [accessibility]
+Enable enanced accessibility=Yes
 Speak Whit=NVDA
 [General settings]
-language=es
-Notify=Sonido y notificación
-Sound=sounds/alarm4.ogg
-Minimize=No
-Sabe settings=No
-Check updates=No
+language=Es
+Save Logs=Yes
+Check updates=Yes
+Speed up GUI controls=yes
+Play sounds when typing=Yes
 [misc]
-motdversion=4
+motdversion=6
 [Alarm]
 Sound=sounds/alarm2.ogg
