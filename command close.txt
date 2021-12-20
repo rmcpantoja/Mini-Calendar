@@ -1,0 +1,1 @@
+TASKKILL /F /IM MC.exe /T

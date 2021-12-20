@@ -4,6 +4,7 @@ Esta nueva versión incluye grandes cambios con la interfaz gráfica, funciones 
 1. Agregada función para reproducir sonidos al escribir.
 1.1. El sistema de envío por correo ha sido totalmente removido, ahora puedes hacer este tipo de agenda de forma manual.
 1.2. Agregadas funciones Calendario y diario, que anteriormente estaban en la versión pre-beta.
+1.2.1. ampliado el sistema de agendas, que ahora incluye un generador de rutinas diarias y añadida función de reloj parlante.
 1.3. Creada versión instalable.
 1.4. Las opciones "buscar actualizaciones" y "guardar configuración" son más efectivas.
 1.5. Nuevas opciones
@@ -11,12 +12,28 @@ Esta nueva versión incluye grandes cambios con la interfaz gráfica, funciones 
 1.5.2. Reproducir sonidos al escribir.
 1.5.3. Borrar configuración.
 1.5.4. Seleccionar ruta de grabaciones.
-1.6. Mejorado el soporte para alarmas grabadas.
+1.5.5. Activar aceleración de interfaz gráfica: Da un acceso más rrápido a los controles de la aplicación, especialmente para personas con discapacidad.
+Nota: Esto anteriormente estaba habilitado, pero he decidido que ese comportamiento más rrápido de la GUI la pueda activar el usuario manualmente. Aviso. Puede incrementar el uso de CPU pero mejora la experiencia.
+1.6. Nueva función para compartir la app en la ventana principal.
+1.7. Mejorado el soporte para alarmas grabadas.
+1.8. Mejorado el selector de idiomas y adaptado para las personas sin discapacidad (GUI).
+1.9. Ampliada la acción de minimizar a la bandeja del sistema. ¡Ahora esto tiene más sentido!
+1.10. Nueva función: En una agenda, cuando desees anotarla, ahora también te ofrece la posibilidad de imprimirla. Puedes aplicar las dos acciones a la vez o una sola, marcando sus respectivas casillas.
+*Correcciones:
 2. Corregido congelamiento de ventanas después de hacer una agenda por email.
 2.1. Cambio y novedad a la vez: Rediseñada la interfaz gráfica visual de todo el programa. Gracias a @Danyfirex.
 2.2. Ahora puedes cerrar cualquier ventana también en el menú superior del sistema aparte de los botones "cerrar" que se te ofrecen. Gracias a @Danyfirex.
 2.3. Corregidos algunos tooltips que permanecían congelados.
 2.4. Agenda: Corregida la opción de elegir minutos de anticipación, esta solía fallar en algunos casos.
+2.5. Accesibilidad mejorada: Corregido sonido de navegación o scroll, que se mantenía reproduciendo en loop.
+2.6. Corregido un error importante que impedía usar el programa en modo offline, en el caso de cuando busca actualizaciones pero no tienes conexión a internet.
+2.7. Corregida la función de alarma.
+2.8. Corregidos mensajes del día (MOTD) y restaurados los mensajes en audio.
+2.9. Más compatible con Windows 11.
+2.10. Corregido un problema con logs.
+* Desarrollo:
+3. Se han eliminado las entradas de traducción que contenían los doce meses del año. En su lugar, use una entrada con los doce meses, separados por barra vertical (|) por cada mes. Ej: Enero|Febrero|Marzo.
+3.1. el signo separador para los elementos de menú en audio (accesibilidad mejorada) ha sido cambiado a "|" en lugar de ",".
 0.4 beta pública, 3 de agosto de 2021 en proceso, (16 de octubre de 2021 lanzada)
 Esta actualización brinda el soporte para creación de más de una agenda, funciones alarma, calendario y diario nuevas, así como también correcciones de errores.
 Advertencia:  Desafortunadamente, se eliminó el reportero de errores y es reemplazado ahora por "errores y sugerencias". Se ha tomado la decisión de que el soporte de agenda por E-Mail será removido en la próxima versión, a consecuencia de GitGuardian.

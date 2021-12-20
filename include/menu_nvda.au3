@@ -5,7 +5,7 @@ Func reader_create_menu($description, $options, $announcePos = "1", $indicator =
 	If $description = "" Then Return 0
 	If $options = "" Then Return 0
 	$selection = 1
-	$items = StringSplit($options, ",")
+	$items = StringSplit($options, "|")
 	If @error Then Return 0
 	$menu_length = $items[0]
 	speaking($description)

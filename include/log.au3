@@ -1,8 +1,11 @@
 #include <fileConstants.au3>
-Global $ifSave = IniRead("config\config.st", "General settings", "Save Logs", "")
+Global $ifSave = IniRead(@ScriptDir &"\config\config.st", "General settings", "Save Logs", "")
 Select
 	Case $ifSave = ""
-		IniWrite("config\config.st", "General settings", "Save Logs", "Yes")
+		IniWrite(@ScriptDir &"\config\config.st", "General settings", "Save Logs", "No")
+		$ifSave = "no"
+	Case $ifSave = "no"
+		sleep(10)
 	Case else
 		Local $logfile = FileOpen("logs\" & @YEAR & @MON & @MDAY & ".log", $FC_OVERWRITE + $FC_CREATEPATH)
 EndSelect

@@ -4,6 +4,13 @@ $sapi = ObjCreate("sapi.spvoice")
 If @error Then
 	MsgBox(4096, "Error", "Could not initialize sapi 5 engine.")
 EndIf
+Func spRate($value)
+$sapi.rate = $value
+EndFunc
+Func spVolume($value)
+$sapi.volume = $value
+EndFunc
+
 Func speak($sText, $Ivalue = 0)
 	$sapi.Speak($sText, $Ivalue)
 EndFunc   ;==>speak

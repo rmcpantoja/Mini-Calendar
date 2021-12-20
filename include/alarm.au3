@@ -1,5 +1,6 @@
-;alarm v0.3.
+;alarm v0.4.
 #include <ComboConstants.au3>
+#include <Date.au3>
 #include <guiConstantsEx.au3>
 #include "soundlib.au3"
 #include-once
@@ -11,14 +12,15 @@ global $alarmrepeat = ""
 global $notify = 0
 global $showwindow=0
 global $Minutetopost = ""
-global $CHECKBOX = $device.opensound ("sounds/CHECKBOX.ogg", true)
-global $CHECKBOX2 = $device.opensound ("sounds/CHECKBOX_unchecked.ogg", true)
-global $scrollsound = $device.opensound ("sounds/scrollTop.ogg", true)
+global $CHECKBOX = $device.opensound (@scriptDir &"\sounds/CHECKBOX.ogg", 0)
+global $CHECKBOX2 = $device.opensound (@scriptDir &"\sounds/CHECKBOX_unchecked.ogg", 0)
+global $scrollsound = $device.opensound (@scriptDir &"\sounds/scrollTop.ogg", 0)
 func alarma()
-GUISetState(@SW_SHOW, $gui_Main)
+GUISetState(@SW_hide, $gui_Main)
 speaking(translate($idioma, "Loading gui..."))
 ;@Danyfirex - en esta funcion cambie muchas posiciones de controles asi que no anote todo lo que se cambio pero todos los controles estan en posiciones
 global $guialarm = GuiCreate(translate($idioma, "new alarm..."))
+GUISetBkColor(0x000000, $guialarm)
 $lb1 = GUICtrlCreateLabel(translate($idioma, "Alarm name"), 20, 20, 120, 20)
 global $alarmname = GUICtrlCreateInput("", 120, 20-5, 120, 20)
 $lb2 = GUICtrlCreateLabel(translate($idioma, "Description (optional)"), 20, 20+30, 120, 20)
@@ -52,7 +54,7 @@ GUICtrlSetState(-1, $GUI_HIDE)
 global $idrpt7 = GUICtrlCreateCheckbox(translate($idioma, "Sunday"), 20,  190 +(6*20), 100, 25)
 GUICtrlSetOnEvent(-1, "configalarm")
 GUICtrlSetState(-1, $GUI_HIDE)
-global $lb6 = GUICtrlCreateLabel(translate($idioma, "Alarm sound, currently") &" " &IniRead("config\config.st", "Alarm", "Sound", ""), 20, 340, 150, 40)
+global $lb6 = GUICtrlCreateLabel(translate($idioma, "Alarm sound, currently") &" " &IniRead(@scriptDir &"\config\config.st", "Alarm", "Sound", ""), 20, 340, 150, 40)
 global $idSoundlist = GUICtrlCreateCombo("", 180, 340-5, 100, 20, BitOR($CBS_DROPDOWNLIST,$CBS_AUTOHSCROLL))
 GUICtrlSetOnEvent(-1, "sounds")
 $BTNRec = GUICtrlCreateButton(translate($idioma, "Record alarm"), 180, 360, 100, 20)
@@ -69,6 +71,7 @@ GUICtrlSetOnEvent(-1, "startalarm")
 global $idCancelalarm = GUICtrlCreateButton(translate($idioma, "Cancel and back"), 200, 460, 100, 30)
 GUICtrlSetOnEvent(-1, "startalarm")
 GUISetState(@SW_SHOW)
+;GUISetOnEvent($GUI_EVENT_CLOSE, "startalarm")
 $soundList = FileReadToArray(@TempDir &"\sounds\AlarmList.txt")
 $Contarlineas = @extended
 If @error Then
@@ -105,12 +108,12 @@ EndIf
 EndFunc
 func sounds()
 $sndlist = GUICtrlRead($idSoundlist)
-$thisSonido = $device.opensound($sndlist, true)
+$thisSonido = $device.opensound(@scriptDir &$sndlist, 0)
 $thisSonido.play
 if @error then
 Msgbox(0, translate($idioma, "Error"), translate($idioma, "Impossible to play"))
 EndIf
-IniWrite("config\config.st", "Alarm", "Sound", $sndlist)
+IniWrite(@scriptDir &"\config\config.st", "Alarm", "Sound", $sndlist)
 GUICtrlSetData($lb6, translate($idioma, "Alarm sound, currently") &" " &$sndlist)
 sleep(400)
 SoundFade($thisSonido)
@@ -169,33 +172,30 @@ select
 Case @GUI_CtrlId = $BTNSabe
 $contador = $contador +1
 Global $namealarm = GUICtrlRead($alarmname)
-if $namealarm ="" then
-$namealarm = "Untitled"
-EndIf
+if $namealarm ="" then $namealarm = "Untitled"
 Global $descalarm = GUICtrlRead($aDesc)
-if $descalarm ="" then
-$descalarm = ""
-EndIf
+if $descalarm ="" then $descalarm = "Untitled"
 Global $houralarm = GUICtrlRead($alarmhour)
 Global $minalarm = GUICtrlRead($alarmmt)
 Global $secalarm = GUICtrlRead($alarmsec)
-if $secalarm ="" then
-$secalarm = "00"
-EndIf
+if $secalarm ="" then $secalarm = "00"
 Global $postalarm = GUICtrlRead($idMinutetopost)
-IniWrite("config\" &$namealarm &".ini", "settings", "Mode", "alarm")
-IniWrite("config\" &$namealarm &".ini", "settings", "Name", $alarmname)
-IniWrite("config\" &$namealarm &".ini", "settings", "Description", $descalarm)
-IniWrite("config\" &$namealarm &".ini", "settings", "Hour", $houralarm)
-IniWrite("config\" &$namealarm &".ini", "settings", "Minute", $minalarm)
-IniWrite("config\" &$namealarm &".ini", "settings", "Second", $secalarm)
-IniWrite("config\" &$namealarm &".ini", "settings", "time", $postalarm)
-IniWrite("config\" &$namealarm &".ini", "settings", "Sound", $sndlist)
-IniWrite("config\" &$namealarm &".ini", "settings", "Repeat", $repeat)
-if $repeat= "1" then IniWrite("config\" &$namealarm &".ini", "settings", "repeat every", $alarmrepeat)
-IniWrite("config\" &$namealarm &".ini", "settings", "Notify", $notify)
-IniWrite("config\" &$namealarm &".ini", "settings", "Show window", $showwindow)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Mode", "alarm")
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Name", $alarmname)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Description", $descalarm)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Hour", $houralarm)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Minute", $minalarm)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Second", $secalarm)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "time", $postalarm)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Sound", $sndlist)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Repeat", $repeat)
+if $repeat= "1" then IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "repeat every", $alarmrepeat)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Notify", $notify)
+IniWrite(@scriptDir &"\config\" &$namealarm &".ini", "settings", "Show window", $showwindow)
 msgbox(64, translate($idioma, "Done"), "Your alarm has been created and will be executed at " &$houralarm &"hours, " &$minalarm &"minutes, " &$secalarm &"seconds.")
+GUISetState(@SW_show, $gui_Main)
+guiDelete($guialarm)
+alarmfunc()
 Case @GUI_CtrlId = $idCancelalarm
 $question = msgBox(4, translate($idioma, "Question"), translate($idioma, "Are you sure you want to exit? Your alarm will not be saved and these changes will be lost."))
 If $question == 6 Then
@@ -217,4 +217,57 @@ _mediastop($recInit)
 MsgBox(48, Translate($idioma, "Done"), Translate($idioma, "Recording finished"))
 $recresult="alarm_" &@username &"_" &@year &@mon &@MDAY &"_" &@hour &@min &@SEC &".wav"
 _mediasave($recInit, @scriptDir & "\recordings\" &$recresult)
+EndFunc
+func alarmfunc()
+While 1
+if _NowTime() = $houralarm & ":" &$minalarm & ":" &$secalarm then
+;speaking("It's time")
+if $sndlist = "" then
+beepalarm()
+else
+$sAlarm = $device.opensound(@scriptDir &$sndList, 0)
+$sAlarm.play
+if $sAlarm.playing = 1 then $sAlarm.reset
+$sAlarm.repeating=1
+EndIf
+if $notify = 1 then
+TrayTip(translate($idioma, "Alarm") &"! " &$alarmname, translate($idioma, "It is") &" " &_NowTime() & ". "&$descalarm, 0, $TIP_ICONASTERISK)
+Speaking(translate($idioma, "Alarm") &"! " &$alarmname &", " &translate($idioma, "It is") &" " &_NowTime() & ". "&$descalarm)
+$notify = 0
+Else
+EndIF
+if $showwindow = 1 then
+global $aGui = guicreate(translate($idioma, "Alarm") &"!")
+$textlabel = GUICtrlCreateLabel($alarmname &@crlf &translate($idioma, "It is") &" " &_NowTime(), 10, 50, 150, 20)
+$discardbtn = GuiCtrlCreateButton(translate($idioma, "discard"), 130, 50, 100, 20)
+GuiCtrlSetOnEvent(-1, "discalarm")
+$ready = GuiCtrlCreateButton(translate($idioma, "Postpone"), 130, 110, 100, 20)
+GuiCtrlSetOnEvent(-1, "postpone")
+$ready = GuiCtrlCreateButton(translate($idioma, "Done"), 130, 185, 100, 20)
+GuiCtrlSetOnEvent(-1, "alarmcompleted")
+GuiSetState(@Sw_SHOW)
+$showwindow = 1
+else
+If _IsPressed($control) And _IsPressed($shift) And _IsPressed($d) Then
+discalarm()
+While _IsPressed($control) And _IsPressed($c)
+Sleep(100)
+WEnd
+EndIf
+If _IsPressed($control) And _IsPressed($shift) And _IsPressed($p) Then
+postpone()
+While _IsPressed($control) And _IsPressed($c)
+Sleep(100)
+WEnd
+EndIf
+If _IsPressed($control) And _IsPressed($shift) And _IsPressed($s) Then
+alarmcompleted()
+While _IsPressed($control) And _IsPressed($c)
+Sleep(100)
+WEnd
+EndIf
+EndIF
+sleep(10)
+EndIf
+Wend
 EndFunc
